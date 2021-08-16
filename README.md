@@ -6,5 +6,9 @@ Open sbt terminal and run assembly command to build fat jar
  -> assembly 
  
 # To Run
-## java -jar hello_spark.jar  
-## spark-submit --master local --class com.demos.App hello_spark.jar 
+
+## Local 
+java -jar hello_spark.jar  
+
+## Cluster 
+spark-submit --master yarn --class com.demos.App hello_spark.jar 
