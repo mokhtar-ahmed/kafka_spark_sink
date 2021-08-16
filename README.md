@@ -1,5 +1,4 @@
-# hello_spark_scala
-spark scala example
+# Spark Scala Example
 
 # To Build 
 Open sbt terminal and run assembly command to build fat jar 
