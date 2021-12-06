@@ -1,18 +1,18 @@
-name := "hello_spark"
+name := "spark_kafka_sink"
 
 version := "0.1"
 
-scalaVersion := "2.12.10"
+scalaVersion := "2.11.12"
 
-val sparkVersion = "3.1.1"
+val sparkVersion = "2.4.4"
 
 lazy val root = (project in file(".")).
   settings(
     name := "scala-sbt",
     version := "1.0",
-    scalaVersion := "2.12.10",
-    mainClass in Compile := Some("com.demos.App"),
-    mainClass in assembly := Some("com.demos.App")
+    scalaVersion := "2.11.12",
+    mainClass in Compile := Some("com.alrajhi.datahub.App"),
+    mainClass in assembly := Some("com.alrajhi.datahub.App")
   )
 
 

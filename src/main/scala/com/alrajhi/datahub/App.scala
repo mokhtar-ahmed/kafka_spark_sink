@@ -1,4 +1,4 @@
-package com.demos
+package com.alrajhi.datahub
 
 import org.apache.spark.sql.{SparkSession}
 
