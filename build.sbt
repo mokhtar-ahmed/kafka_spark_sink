@@ -11,8 +11,8 @@ lazy val root = (project in file(".")).
     name := "scala-sbt",
     version := "1.0",
     scalaVersion := "2.11.12",
-    mainClass in Compile := Some("com.alrajhi.datahub.App"),
-    mainClass in assembly := Some("com.alrajhi.datahub.App")
+    mainClass in Compile := Some("com.name.datahub.App"),
+    mainClass in assembly := Some("com.name.datahub.App")
   )
 
 
