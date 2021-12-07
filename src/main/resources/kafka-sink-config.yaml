@@ -4,9 +4,13 @@ spark:
   hive.exec.dynamic.partition: 'true'
   hive.exec.dynamic.partition.mode: nonstrict
 
-kafka:
+input:
+  type: kafka
   kafka.bootstrap.servers: localhost:9092
   subscribe: user-activity
+
+transformer:
+  type: key-value-as-is
 
 sink:
   table.name: user_activity

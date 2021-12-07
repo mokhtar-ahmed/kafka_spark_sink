@@ -2,8 +2,6 @@ package com.name.datahub.utils
 import java.net.URL
 import java.util.Properties
 import scala.io.Source
-
-import java.io.{File, FileInputStream}
 import org.yaml.snakeyaml.Yaml
 
 
