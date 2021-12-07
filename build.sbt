@@ -17,8 +17,14 @@ lazy val root = (project in file(".")).
 
 
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % sparkVersion,
-  "org.apache.spark" %% "spark-sql" % sparkVersion
+  "org.apache.spark" %% "spark-core" % sparkVersion
+  ,"org.apache.spark" %% "spark-sql" % sparkVersion
+  ,"org.apache.spark" %% "spark-sql-kafka-0-10" % sparkVersion
+  ,"org.apache.spark" %% "spark-hive" % sparkVersion
+  ,"org.apache.kafka" %% "kafka" % "2.4.1"
+  ,"org.yaml" % "snakeyaml" % "1.29"
+  //,"org.json4s" %% "json4s-native" % "4.0.3"
+  //,"org.json4s" %% "json4s-ext" % "4.0.3"
 )
 
 val meta = """META.INF(.)*""".r

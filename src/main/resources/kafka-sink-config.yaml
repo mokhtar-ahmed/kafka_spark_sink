@@ -1,0 +1,14 @@
+---
+spark:
+  app.name: user_activity_sink
+  hive.exec.dynamic.partition: 'true'
+  hive.exec.dynamic.partition.mode: nonstrict
+
+kafka:
+  kafka.bootstrap.servers: localhost:9092
+  subscribe: user-activity
+
+sink:
+  table.name: user_activity
+  type: hive
+  write.mode: append
