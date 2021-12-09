@@ -7,7 +7,7 @@ Open sbt terminal and run assembly command to build fat jar
 # To Run
 
 ### Local 
-java -jar spark-kafka-sink.jar 123 1234 dev path/to/kafka-sink-config.yaml
+java -jar spark_kafka_sink.jar 123 1234 dev path/to/kafka-sink-config.yaml
 
 ### Cluster 
-spark-submit --master yarn --class com.demos.App hello_spark.jar 123 1234 dev path/to/kafka-sink-config.yaml 
+spark-submit --master yarn --class com.name.datahub.App spark_kafka_sink.jar  123 1234 dev path/to/kafka-sink-config.yaml 
