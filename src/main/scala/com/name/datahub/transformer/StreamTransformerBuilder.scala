@@ -6,7 +6,8 @@ object StreamTransformerBuilder {
 
   def apply(ds: Dataset[Row], config: Map[String, String]): Dataset[Row] = {
     config.getOrElse("type", "") match {
-      case "key-value-as-is" => UnitTransformer(ds)
+      case "key_value_as_is" => UnitTransformer(ds, config)
+      case "value_only_as_json" => JsonTransformer(ds, config)
       case _ => null
     }
   }

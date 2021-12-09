@@ -16,7 +16,7 @@ object KafkaRunner extends App {
        // val value = toJson(activity)
         val value = activity.toString
         kafkaWriter.write(key, value)
-        Thread.sleep(1000)
+        Thread.sleep(10000)
         println(s"Message written to kafka successfully, ${value} .")
     }
 

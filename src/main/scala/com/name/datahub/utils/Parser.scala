@@ -1,7 +1,7 @@
 package com.name.datahub.utils
 import java.net.URL
 import java.util.Properties
-import scala.io.Source
+import scala.io.{BufferedSource, Source}
 import org.yaml.snakeyaml.Yaml
 
 
@@ -15,11 +15,10 @@ object Parser {
   }
 
 
-  def parseYaml(url: URL) = {
-    val source = Source.fromURL(url)
+  def parseYaml(path: String) = {
+    val source = Source.fromFile(path)
     val ios = source.bufferedReader()
     val config = new Yaml().load(ios).asInstanceOf[java.util.Map[String, java.util.Map[String, String]]]
-    println(config)
     config
   }
 

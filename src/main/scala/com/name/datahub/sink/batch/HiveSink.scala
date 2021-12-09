@@ -8,6 +8,7 @@ object HiveSink {
   def apply(df: DataFrame, config:Map[String, String]): DataStreamWriter[Row] = {
 
     val tableName = config.getOrElse("table.name", "")
+    val checkpointLocation = config.getOrElse("checkpoint.location", null)
 
     val writeMode = config.getOrElse("write.mode", "") match {
       case "overwrite" => SaveMode.Overwrite
@@ -15,8 +16,13 @@ object HiveSink {
       case _ => SaveMode.ErrorIfExists
     }
 
-    df.writeStream.foreachBatch {
-      (df: DataFrame, id: Long) => df.write.mode(writeMode).saveAsTable(tableName)
+    df.writeStream
+      .option("checkpointLocation", checkpointLocation)
+      .foreachBatch {
+        (df: DataFrame, id: Long) => {
+          df.show(truncate = false)
+          df.write.mode(writeMode).saveAsTable(tableName)
+        }
     }
 
   }

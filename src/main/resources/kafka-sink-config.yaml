@@ -7,12 +7,20 @@ spark:
 input:
   type: kafka
   kafka.bootstrap.servers: localhost:9092
+  startingOffsets: earliest
   subscribe: user-activity
 
 transformer:
-  type: key-value-as-is
+  type: value_only_as_json
+  infer.schema: false
+  topic.schema:
+    userId : string
+    pageId : string
+    activityType : string
+    transactionTime : timestamp
 
 sink:
-  table.name: user_activity
   type: hive
+  checkpoint.location: checkpoint/kafka_sink_checkpoint
+  table.name: user_activity_2
   write.mode: append
