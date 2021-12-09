@@ -22,5 +22,6 @@ transformer:
 sink:
   type: hive
   checkpoint.location: checkpoint/kafka_sink_checkpoint
+  trigger.interval: '60'
   table.name: user_activity_2
   write.mode: append

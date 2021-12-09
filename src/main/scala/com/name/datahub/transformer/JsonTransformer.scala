@@ -11,9 +11,10 @@ object JsonTransformer extends StreamTransformer {
 
   override def transform(ds: Dataset[Row], config: Map[String, String]): Dataset[Row] = {
     import ds.sparkSession.implicits._
-    println(config)
 
-    val schemaConfig = config.getOrElse("topic.schema", Map.empty[String, String]).asInstanceOf[java.util.Map[String,String]].toMap
+    val schemaConfig = config.getOrElse("topic.schema", Map.empty[String, String])
+      .asInstanceOf[java.util.Map[String,String]].toMap
+
     val schema = inferSchema(schemaConfig)
 
     ds.selectExpr( "CAST(value AS STRING) as value")

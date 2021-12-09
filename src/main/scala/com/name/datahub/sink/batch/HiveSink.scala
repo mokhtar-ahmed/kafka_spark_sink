@@ -1,7 +1,9 @@
 package com.name.datahub.sink.batch
 
 import org.apache.spark.sql.{DataFrame, Row, SaveMode}
-import org.apache.spark.sql.streaming.DataStreamWriter
+import org.apache.spark.sql.streaming.{DataStreamWriter, Trigger}
+
+import java.util.concurrent.TimeUnit
 
 object HiveSink {
 
@@ -9,6 +11,8 @@ object HiveSink {
 
     val tableName = config.getOrElse("table.name", "")
     val checkpointLocation = config.getOrElse("checkpoint.location", null)
+    val triggerInterval = config.getOrElse("trigger.interval", "0").trim.toInt
+
 
     val writeMode = config.getOrElse("write.mode", "") match {
       case "overwrite" => SaveMode.Overwrite
@@ -18,6 +22,7 @@ object HiveSink {
 
     df.writeStream
       .option("checkpointLocation", checkpointLocation)
+      .trigger(Trigger.ProcessingTime(triggerInterval, TimeUnit.SECONDS))
       .foreachBatch {
         (df: DataFrame, id: Long) => {
           df.show(truncate = false)
